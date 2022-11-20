@@ -17,14 +17,15 @@ class RestaurantCubit extends Cubit<States> {
 
   RestaurantCubit(this._occasionsRepository) : super(LoadingState());
 
-  getRestaurant(RestaurantsScreenState screenState) {
-    emit(LoadingState());
+  getRestaurant(RestaurantsScreenState screenState , bool isLoading) {
+    if(isLoading)
+   emit(LoadingState());
     _occasionsRepository.getRestaurant().then((resturans) {
       if (resturans == null) {
         emit(ErrorState(
             errMsg: 'Connection error',
             retry: () {
-              getRestaurant(screenState);
+              getRestaurant(screenState,isLoading);
             }));
       } else if (resturans.data != null) {
         List<RestaurantResponse> occList = [];
@@ -49,7 +50,7 @@ class RestaurantCubit extends Cubit<States> {
         emit(ErrorState(
             errMsg: resturans.errorMessage ?? '',
             retry: () {
-              getRestaurant(screenState);
+              getRestaurant(screenState,isLoading);
             }));
       }
     });
@@ -63,15 +64,15 @@ class RestaurantCubit extends Cubit<States> {
         emit(ErrorState(
             errMsg: 'Connection error',
             retry: () {
-              getRestaurant(screenState);
+              getRestaurant(screenState,true);
             }));
       } else if (value.codeInt == 200) {
-        getRestaurant(screenState);
+        getRestaurant(screenState,true);
       } else {
         emit(ErrorState(
             errMsg: value.errorMessage ?? '',
             retry: () {
-              getRestaurant(screenState);
+              getRestaurant(screenState,true);
             }));
       }
     });

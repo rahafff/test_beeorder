@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sales_beeorder_app/abstracts/states/state.dart';
+import 'package:sales_beeorder_app/module_auth/ui/widget/login_widgets/custem_button.dart';
 import 'package:sales_beeorder_app/utils/images/images.dart';
 
 class ErrorState extends States {
@@ -16,7 +17,7 @@ class ErrorState extends States {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Lottie.asset(LottieAsset.LOADING_CART),
+          Image.asset(ImageAsset.NO_CONNECTION),
           SizedBox(
             height: 10,
           ),
@@ -32,7 +33,7 @@ class ErrorState extends States {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 50,end: 50),
-            // child: CustomLoadingButton(bgColor: Theme.of(context).errorColor,buttonTab: retry,loading: false,text: 'Retry',textColor: Colors.white,),
+            child: CustomButton(bgColor: Theme.of(context).errorColor,buttonTab: retry,loading: false,text: 'Retry',textColor: Colors.white,),
           )
         ],
       ),

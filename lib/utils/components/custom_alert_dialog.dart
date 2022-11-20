@@ -81,17 +81,17 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             ],
           ),
         ),
-        Positioned(
-          left: 5,
-          right: 5,
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            radius: 40,
-            child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                child: Image.asset(ImageAsset.PASSWORD)),
-          ),
-        ),
+        // Positioned(
+        //   left: 5,
+        //   right: 5,
+        //   child: CircleAvatar(
+        //     backgroundColor: Colors.transparent,
+        //     radius: 40,
+        //     child: ClipRRect(
+        //         borderRadius: BorderRadius.all(Radius.circular(12)),
+        //         child: Image.asset(ImageAsset.PASSWORD)),
+        //   ),
+        // ),
       ],
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:sales_beeorder_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,14 +23,18 @@ class RestaurantsScreen extends StatefulWidget {
 }
 
 class RestaurantsScreenState extends State<RestaurantsScreen> {
+  Timer? timer;
+
   @override
   void initState() {
     super.initState();
-    widget.cubit.getRestaurant(this);
+    widget.cubit.getRestaurant(this,true);
+    timer = Timer.periodic(Duration(seconds: 3), (Timer t) => getRestaurant(false));
+
   }
 
-  getRestaurant() {
-    widget.cubit.getRestaurant(this);
+  getRestaurant(bool isLoading) {
+    widget.cubit.getRestaurant(this,isLoading);
   }
   createRestaurant(CreateRestaurantRequest restaurantRequest) {
     widget.cubit.createRestaurant(this , restaurantRequest);
@@ -37,6 +43,7 @@ class RestaurantsScreenState extends State<RestaurantsScreen> {
 
   @override
   void dispose() {
+    timer?.cancel();
     super.dispose();
   }
 
