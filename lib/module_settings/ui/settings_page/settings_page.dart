@@ -5,7 +5,6 @@ import 'package:sales_beeorder_app/generated/l10n.dart';
 import 'package:sales_beeorder_app/module_auth/authorization_routes.dart';
 import 'package:sales_beeorder_app/module_auth/service/auth_service/auth_service.dart';
 import 'package:sales_beeorder_app/module_localization/service/localization_service/localization_service.dart';
-import 'package:sales_beeorder_app/module_notifications/service/fire_notification_service/fire_notification_service.dart';
 import 'package:sales_beeorder_app/module_theme/service/theme_service/theme_service.dart';
 import 'package:sales_beeorder_app/utils/components/fixed_container.dart';
 
@@ -14,13 +13,11 @@ class SettingsScreen extends StatefulWidget {
   final AuthService _authService;
   final LocalizationService _localizationService;
   final AppThemeDataService _themeDataService;
-  final FireNotificationService _notificationService;
 
   SettingsScreen(
     this._authService,
     this._localizationService,
     this._themeDataService,
-    this._notificationService,
   );
 
   @override

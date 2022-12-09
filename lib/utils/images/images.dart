@@ -4,6 +4,8 @@ class ImageAsset {
   static const LOGO = ROOT + 'logo.png';
   static const INCREASING = ROOT + 'increasing.png';
   static const NO_CONNECTION = ROOT + 'no-connection.png';
+  static const PAYMENT = ROOT + 'payment.png';
+  static const SPLASH = ROOT + 'splash.png';
 
 
 }

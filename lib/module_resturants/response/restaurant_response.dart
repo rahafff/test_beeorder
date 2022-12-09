@@ -1,32 +1,39 @@
-import 'package:latlong2/latlong.dart';
 
 class RestaurantResponse {
   RestaurantResponse({
     this.id,
     this.longitude,
     this.latitude,
-    this.name,
+    this.costumerName,
     this.details,
-    this.createdAt,this.location,this.distance
+    this.createdAt,
+    this.price,
+
+    required this.isDone,
+    required this.finishOrder
   });
 
   String? id;
   String? longitude;
   String? latitude;
-  String? name;
+  String? costumerName;
   String? details;
   String? createdAt;
-  LatLng? location;
-  double? distance;
+  String? price;
+  bool  isDone = false;
+  bool  finishOrder = false;
+
 
   RestaurantResponse.fromJson(Map<String, dynamic> json) {
     longitude = json["longitude"];
     id = json["id"];
     latitude = json["latitude"];
-    name = json["name"];
+    costumerName = json["name"];
     details = json["details"];
     createdAt = json["created_at"];
-    location = LatLng(double.parse(latitude ?? '0'), double.parse(longitude ?? '0'));
-    distance =0;
+    price = json["created_at"];
+    isDone = false;
+    finishOrder = false;
+
   }
 }

@@ -1,11 +1,9 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:sales_beeorder_app/abstracts/states/error_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sales_beeorder_app/module_resturants/request/create_restaurant_request.dart';
 import '../../abstracts/states/loading_state.dart';
 import '../../abstracts/states/state.dart';
-import '../../module_deep_links/service/deep_links_service.dart';
 import '../repository/resturant_repository.dart';
 import '../response/restaurant_response.dart';
 import '../ui/screens/restaurant_screen.dart';
@@ -18,42 +16,65 @@ class RestaurantCubit extends Cubit<States> {
   RestaurantCubit(this._occasionsRepository) : super(LoadingState());
 
   getRestaurant(RestaurantsScreenState screenState , bool isLoading) {
-    if(isLoading)
-   emit(LoadingState());
-    _occasionsRepository.getRestaurant().then((resturans) {
-      if (resturans == null) {
-        emit(ErrorState(
-            errMsg: 'Connection error',
-            retry: () {
-              getRestaurant(screenState,isLoading);
-            }));
-      } else if (resturans.data != null) {
-        List<RestaurantResponse> occList = [];
-        DeepLinksService.defaultLocation().then((currentLocation) async {
-          if (currentLocation != null) {
-            for (var item in resturans.data) {
-              RestaurantResponse restv = RestaurantResponse.fromJson(item);
-              restv.distance = await Geolocator.distanceBetween(
-                      currentLocation.latitude,
-                      currentLocation.longitude,
-                      restv.location!.latitude,
-                      restv.location!.longitude) /
-                  1000;
-              occList.add(restv);
-            }
-            occList.sort((a, b) => a.distance!.compareTo(b.distance!));
-            emit(RestaurantsListSuccess(
-                screenState: screenState, restaurantResponse: occList));
-          }
-        });
-      } else {
-        emit(ErrorState(
-            errMsg: resturans.errorMessage ?? '',
-            retry: () {
-              getRestaurant(screenState,isLoading);
-            }));
-      }
-    });
+
+    List<RestaurantResponse> historyOrd = [
+      RestaurantResponse(
+          createdAt: "2022-03-01",
+          costumerName: 'KeNaN Boss',
+          price: '20000',
+          id: 'CA31533',
+          isDone: true,
+          finishOrder: true,
+          details: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,'),
+      RestaurantResponse(
+          createdAt: "2022-03-01",
+          costumerName: 'KeNaN Boss',
+          price: '20000',
+          id: 'CA31533',
+          isDone: true,
+          finishOrder: true,
+          details: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,'),
+      RestaurantResponse(
+          createdAt: "2022-03-01",
+          costumerName: 'KeNaN Boss',
+          price: '20000',
+          id: 'CA31533',
+          isDone: true,
+          finishOrder: true,
+          details: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,'),
+
+
+    ];
+
+    List<RestaurantResponse> currentOr = [
+
+      RestaurantResponse(
+          isDone: false,
+          finishOrder: false,
+          createdAt: "2022-05-04",
+          costumerName: 'Rahaf Tan',
+          price: '20500',
+          id: 'CA31663',
+          details: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,'),
+      RestaurantResponse(
+          isDone: false,
+          finishOrder: false,
+          createdAt: "2022-05-04",
+          costumerName: 'Rahaf Tan',
+          price: '20500',
+          id: 'CA31663',
+          details: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,'),
+      RestaurantResponse(
+          isDone: false,
+          finishOrder: false,
+          createdAt: "2022-05-04",
+          costumerName: 'Rahaf Tan',
+          price: '20500',
+          id: 'CA31663',
+          details: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,'),
+    ];
+
+    emit(RestaurantsListSuccess(screenState: screenState,currentOrders: currentOr,historyOrders: historyOrd));
   }
 
   createRestaurant(

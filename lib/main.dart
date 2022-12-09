@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
@@ -12,8 +11,6 @@ import 'package:sales_beeorder_app/generated/l10n.dart';
 import 'package:sales_beeorder_app/hive/hive_init.dart';
 import 'package:sales_beeorder_app/module_auth/authoriazation_module.dart';
 import 'package:sales_beeorder_app/module_localization/service/localization_service/localization_service.dart';
-import 'package:sales_beeorder_app/module_notifications/service/fire_notification_service/fire_notification_service.dart';
-import 'package:sales_beeorder_app/module_notifications/service/local_notification_service/local_notification_service.dart';
 import 'package:sales_beeorder_app/module_resturants/restaurant_module.dart';
 import 'package:sales_beeorder_app/module_settings/settings_module.dart';
 import 'package:sales_beeorder_app/module_splash/splash_module.dart';
@@ -36,7 +33,7 @@ void main() async {
     }
   }
   await HiveSetUp.init();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -59,8 +56,8 @@ void main() async {
 class MyApp extends StatefulWidget {
   final AppThemeDataService _themeDataService;
   final LocalizationService _localizationService;
-  final FireNotificationService _fireNotificationService;
-  final LocalNotificationService _localNotificationService;
+  // final FireNotificationService _fireNotificationService;
+  // final LocalNotificationService _localNotificationService;
   final SplashModule _splashModule;
   final AuthorizationModule _authorizationModule;
   final RestaurantsModule _restaurantsModule;
@@ -69,8 +66,8 @@ class MyApp extends StatefulWidget {
   MyApp(
     this._themeDataService,
     this._localizationService,
-    this._fireNotificationService,
-    this._localNotificationService,
+    // this._fireNotificationService,
+    // this._localNotificationService,
     this._splashModule,
     this._authorizationModule,
     this._restaurantsModule,
@@ -92,18 +89,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     lang = widget._localizationService.getLanguage();
     activeTheme = widget._themeDataService.getActiveTheme();
 
-    widget._fireNotificationService.init();
-    widget._localNotificationService.init();
+    // widget._fireNotificationService.init();
+    // widget._localNotificationService.init();
     widget._localizationService.localizationStream.listen((event) {
       Moment.setLocaleGlobally(event == 'en' ? LocaleEn() : LocaleAr());
       lang = event;
       setState(() {});
     });
-    widget._fireNotificationService.onNotificationStream.listen((event) {
-      widget._localNotificationService.showNotification(event);
-    });
-    widget._localNotificationService.onLocalNotificationStream
-        .listen((event) {});
+    // widget._fireNotificationService.onNotificationStream.listen((event) {
+    //   widget._localNotificationService.showNotification(event);
+    // });
+    // widget._localNotificationService.onLocalNotificationStream
+    //     .listen((event) {});
 //     getIt<GlobalStateManager>().stateStream.listen((event) {
 //       if (mounted) {
 //         setState(() {});
@@ -139,7 +136,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       ],
       theme: activeTheme,
       supportedLocales: S.delegate.supportedLocales,
-      title: 'Bee Order',
+      title: 'Cashier',
       routes: fullRoutesList,
       initialRoute: SplashRoutes.SPLASH_SCREEN,
     );

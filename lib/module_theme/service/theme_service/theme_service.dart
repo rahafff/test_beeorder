@@ -16,7 +16,7 @@ class AppThemeDataService {
   AppThemeDataService(this._preferencesHelper);
 
   static Color get PrimaryColor {
-   return Colors.blue.shade900;
+   return Colors.red.shade900;
 
   }
 

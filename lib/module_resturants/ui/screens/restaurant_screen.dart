@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:sales_beeorder_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sales_beeorder_app/module_resturants/request/create_restaurant_request.dart';
-import 'package:sales_beeorder_app/module_resturants/ui/widget/create_occa_sheet.dart';
 import 'package:sales_beeorder_app/module_settings/setting_routes.dart';
 import '../../../abstracts/states/state.dart';
 import '../../state_manager/restaurants_state_manager.dart';
@@ -22,14 +20,15 @@ class RestaurantsScreen extends StatefulWidget {
   State<RestaurantsScreen> createState() => RestaurantsScreenState();
 }
 
-class RestaurantsScreenState extends State<RestaurantsScreen> {
-  Timer? timer;
+class RestaurantsScreenState extends State<RestaurantsScreen>  with SingleTickerProviderStateMixin  {
+  TabController?  tabController;
 
   @override
   void initState() {
     super.initState();
+     tabController = TabController(length: 2, vsync: this);
+
     widget.cubit.getRestaurant(this,true);
-    timer = Timer.periodic(Duration(seconds: 3), (Timer t) => getRestaurant(false));
 
   }
 
@@ -43,7 +42,6 @@ class RestaurantsScreenState extends State<RestaurantsScreen> {
 
   @override
   void dispose() {
-    timer?.cancel();
     super.dispose();
   }
 
@@ -59,7 +57,6 @@ class RestaurantsScreenState extends State<RestaurantsScreen> {
       appBar: AppBar(
         title: Text(S.of(context).restaurant),
         actions: [
-
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, SettingRoutes.ROUTE_SETTINGS);
@@ -71,22 +68,7 @@ class RestaurantsScreenState extends State<RestaurantsScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        showModalBottomSheet(
-            backgroundColor: Colors.transparent,
-            context: context,
-            builder: (context) {
-              return CreateRestaurantSheet(createRes: (req){
-                Navigator.pop(context);
-                createRestaurant(req);
-              },isUpdated: false,);
-            },
-            shape: RoundedRectangleBorder(
-                borderRadius:
-                BorderRadius.vertical(top: Radius.circular(15))),
-            isScrollControlled: true,
-            elevation: 5);
-      },child: Icon(Icons.add , color: Colors.white,),backgroundColor: Theme.of(context).primaryColor),
+
       body: BlocBuilder<RestaurantCubit, States>(
         bloc: widget.cubit,
         builder: (context, state) {

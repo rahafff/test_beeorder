@@ -14,7 +14,7 @@ class ThemePreferencesHelper {
   }
 
   bool isDarkMode() {
-    bool? dark = preferences.get('dark') ?? false;
+    bool? dark = preferences.get('dark') ?? true;
     return dark == true;
   }
 }

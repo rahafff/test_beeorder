@@ -30,17 +30,31 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child:Lottie.asset(LottieAsset.SPLASH),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(ImageAsset.SPLASH ,height: 300,),
+              SizedBox(height: 20,),
+              Text(
+                'Cashier App',
+                style: TextStyle(
+                    color: Color(0xFFcccccf),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40),
+              ),
+            ],
+          ),
         ));
   }
 
   Future<String> _getNextRoute() async {
-    await Future.delayed(Duration(seconds: 6));
-    if (widget._authService.isLoggedIn) {
-      return RestaurantRoutes.VIEW_ALL;
-    } else {
-      return AuthorizationRoutes.LOGIN_SCREEN;
-    }
-
+    await Future.delayed(Duration(seconds: 3));
+    // if (widget._authService.isLoggedIn) {
+    //   return RestaurantRoutes.VIEW_ALL;
+    // } else {
+    //   return AuthorizationRoutes.LOGIN_SCREEN;
+    // }
+    return AuthorizationRoutes.WELCOME_SCREEN;
   }
 }
