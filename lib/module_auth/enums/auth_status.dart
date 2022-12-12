@@ -1,6 +1,5 @@
 enum AuthStatus {
-  AUTHORIZED_CLIENT,
-  CONFIRM_CODE,
+  NOT_LOGGED_IN,
+  AUTHORIZED,
 
 }
-Map<AuthStatus, String> authStatusMap = Map<AuthStatus ,String>();

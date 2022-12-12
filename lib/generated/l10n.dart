@@ -409,6 +409,46 @@ class S {
       args: [],
     );
   }
+
+  /// `There is problem with your connection , please try again`
+  String get networkError {
+    return Intl.message(
+      'There is problem with your connection , please try again',
+      name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong username or password`
+  String get invalidCredentials {
+    return Intl.message(
+      'Wrong username or password',
+      name: 'invalidCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client name`
+  String get clientName {
+    return Intl.message(
+      'Client name',
+      name: 'clientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client number`
+  String get clientNumber {
+    return Intl.message(
+      'Client number',
+      name: 'clientNumber',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

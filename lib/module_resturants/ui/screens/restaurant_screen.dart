@@ -35,7 +35,7 @@ class RestaurantsScreenState extends State<RestaurantsScreen>  with SingleTicker
   getRestaurant(bool isLoading) {
     widget.cubit.getRestaurant(this,isLoading);
   }
-  createRestaurant(CreateRestaurantRequest restaurantRequest) {
+  createRestaurant(String restaurantRequest) {
     widget.cubit.createRestaurant(this , restaurantRequest);
   }
 

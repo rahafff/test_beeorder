@@ -3,11 +3,10 @@ import 'package:sales_beeorder_app/module_resturants/response/restaurant_respons
 import 'package:sales_beeorder_app/module_resturants/ui/screens/restaurant_screen.dart';
 import 'package:sales_beeorder_app/module_resturants/ui/widget/restaurant_card.dart';
 import '../../../abstracts/states/state.dart';
-import 'package:buttons_tabbar/buttons_tabbar.dart';
 
 class RestaurantsListSuccess extends States {
-  final List<RestaurantResponse> currentOrders;
-  final List<RestaurantResponse> historyOrders;
+  final List<OrderResponse> currentOrders;
+  final List<OrderResponse> historyOrders;
   RestaurantsScreenState screenState;
 
   RestaurantsListSuccess(

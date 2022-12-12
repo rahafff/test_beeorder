@@ -3,7 +3,7 @@ import 'package:sales_beeorder_app/module_resturants/response/restaurant_respons
 import '../../../generated/l10n.dart';
 
 class ViewRestaurantDetails extends StatelessWidget {
-  final RestaurantResponse model;
+  final OrderResponse model;
   ViewRestaurantDetails({required this.model});
 
   @override
@@ -27,7 +27,7 @@ class ViewRestaurantDetails extends StatelessWidget {
                       BorderRadius.vertical(top: Radius.circular(30))),
               child: ListTile(
                 title: Text(
-                  model.costumerName ?? '',
+                  model.clientName ?? '',
                   style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 leading: Icon(Icons.location_city, color: Colors.white),
@@ -35,7 +35,7 @@ class ViewRestaurantDetails extends StatelessWidget {
             ),
             ListTile(
               title: Text(S.of(context).name),
-              subtitle: Text(model.costumerName ?? ''),
+              subtitle: Text(model.clientName ?? ''),
             ),
             SizedBox(
               height: 5,

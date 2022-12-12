@@ -1,25 +1,22 @@
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:sales_beeorder_app/generated/l10n.dart';
-import 'package:sales_beeorder_app/module_auth/authorization_routes.dart';
 import 'package:sales_beeorder_app/module_auth/ui/screen/login_screen/login_screen.dart';
 import 'package:sales_beeorder_app/module_auth/ui/states/login_states/login_state.dart';
+import 'package:sales_beeorder_app/module_auth/ui/widget/login_widgets/custem_button.dart';
 import 'package:sales_beeorder_app/module_auth/ui/widget/login_widgets/custom_field.dart';
 import 'package:sales_beeorder_app/utils/helpers/custom_flushbar.dart';
 import 'package:sales_beeorder_app/utils/images/images.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../widget/login_widgets/custem_button.dart';
 
 class LoginStateInit extends LoginState {
   LoginStateInit(LoginScreenState screen, {String? error}) : super(screen) {
     if (error != null) {
-      CustomFlushBarHelper.createError(
-              title: S.current.warning, message: error)
+      CustomFlushBarHelper.createError(title: S.current.warning, message: error)
           .show(screen.context);
     }
   }
-  TextEditingController mobileController = TextEditingController();
-  // TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _loginKey = GlobalKey<FormState>();
   @override
   Widget getUI(BuildContext context) {
@@ -27,46 +24,90 @@ class LoginStateInit extends LoginState {
       child: Form(
         key: _loginKey,
         child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: ListView(
-              physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
-              children: <Widget>[
-                MediaQuery.of(context).viewInsets.bottom == 0
-                    ? Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: Image.asset(
-                          ImageAsset.INCREASING,
-                          width: 90,
-                          height: 230,
-                        ),
-                      )
-                    : Container(),
-                SizedBox(
-                  height: 45,
-                ),
-                CustomLoginFormField(
-                  hintText: S.of(context).phoneNumber,
-                  validator: true,
-                  controller: mobileController,
-                  password: false,
-                  phone: true,
-                  preIcon: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(5, 10, 5, 10),
-                    child: Text('+963'),
+          child: ListView(
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
+            children: <Widget>[
+              ClipPath(
+                clipper: WaveClipperTwo(),
+                child: Container(
+                  height: 150.0,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Colors.red.shade400,
+                        Colors.red.shade900,
+                      ],
+                    ),
                   ),
-                  borderRadius: 15,
                 ),
-                SizedBox(
-                  height: 45,
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              'Sign In',
+                              style: TextStyle(
+                                  color: Color(0xFFcccccf),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 40),
+                            ),
+                            Text(
+                              'Welcome back',
+                              style: TextStyle(
+                                  color: Color(0xFF777779),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        Image.asset(
+                          ImageAsset.PAYMENT,
+                          height: 70,
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 50),
+                    CustomLoginFormField(
+                      hintText: S.of(context).email,
+                      validator: true,
+                      controller: usernameController,
+                      password: false,
+                      borderRadius: 15,
+                      contentPadding: EdgeInsetsDirectional.all(12),
+                    ),
+                    SizedBox(height: 15),
+                    CustomLoginFormField(
+                      hintText: S.of(context).password,
+                      controller: passwordController,
+                      validator: true,
+                      password: true,
+                      borderRadius: 15,
+                      contentPadding: EdgeInsetsDirectional.all(12),
+                    ),
+                  ],
                 ),
-
-                CustomButton(
+              ),
+              SizedBox(height: 50),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: CustomButton(
                   buttonTab: () {
                     if (_loginKey.currentState!.validate()) {
                       screen.loginClient(
-                          mobileController.text.trim());
+                        usernameController.text,
+                        passwordController.text,
+                      );
                     }
                   },
                   loading: screen.loadingSnapshot.connectionState ==
@@ -75,28 +116,8 @@ class LoginStateInit extends LoginState {
                   bgColor: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-
-                InkWell(
-                  onTap: (){
-                    Navigator.pushNamed(context, AuthorizationRoutes.REGISTER_SCREEN);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Text(S.of(context).dontHaveAccount),
-                    Text(S.of(context).createAccount ,
-                      style: TextStyle(fontWeight: FontWeight.bold  ,color: Theme.of(context).primaryColor,),),
-                  ],),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

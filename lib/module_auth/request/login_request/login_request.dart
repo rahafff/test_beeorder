@@ -1,13 +1,19 @@
+
 class LoginRequest {
-  String? mobile;
+  String? username;
+  String? password;
 
+  LoginRequest({this.username, this.password});
 
-
-  LoginRequest({this.mobile,});
+  LoginRequest.fromJson(Map<String, dynamic> json) {
+    username = json['username'];
+    password = json['password'];
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['mobile'] = this.mobile;
+    data['username'] = username.toString();
+    data['password'] = this.password;
     return data;
   }
 }

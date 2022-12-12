@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:lottie/lottie.dart';
 import 'package:sales_beeorder_app/module_auth/authorization_routes.dart';
 import 'package:sales_beeorder_app/module_auth/service/auth_service/auth_service.dart';
 import 'package:sales_beeorder_app/module_resturants/restaurant_route.dart';
@@ -50,11 +49,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<String> _getNextRoute() async {
     await Future.delayed(Duration(seconds: 3));
-    // if (widget._authService.isLoggedIn) {
-    //   return RestaurantRoutes.VIEW_ALL;
-    // } else {
-    //   return AuthorizationRoutes.LOGIN_SCREEN;
-    // }
-    return AuthorizationRoutes.WELCOME_SCREEN;
+    if (widget._authService.isLoggedIn) {
+      return RestaurantRoutes.VIEW_ALL;
+    } else {
+      return AuthorizationRoutes.LOGIN_SCREEN;
+    }
+    // return AuthorizationRoutes.WELCOME_SCREEN;
   }
 }

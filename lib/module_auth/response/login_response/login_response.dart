@@ -1,19 +1,24 @@
+
 import 'package:sales_beeorder_app/utils/logger/logger.dart';
 
 class LoginResponse {
-  LoginResponse({
-    this.token,
-  });
-
   String? token;
-
+  String? statusCode;
+  LoginResponse({this.token, this.statusCode});
 
   LoginResponse.fromJson(Map<String, dynamic> json) {
     try {
-      token = json["token"];
+      token = json['token'];
+      statusCode = json['code'] ?? json['statusCode'] ?? json['status_code'];
     } catch (e) {
-      Logger().error('Auth login Response', e.toString(), StackTrace.current);
+      Logger().error('Auth Login Response', e.toString(), StackTrace.current);
+      statusCode = '-1';
     }
   }
-}
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['token'] = this.token;
+    return data;
+  }
+}

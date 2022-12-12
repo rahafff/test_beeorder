@@ -1,17 +1,19 @@
-import 'package:sales_beeorder_app/abstracts/response/action_response.dart';
-import 'package:sales_beeorder_app/module_auth/enums/auth_status.dart';
-import 'package:sales_beeorder_app/module_auth/exceptions/auth_exception.dart';
-import 'package:sales_beeorder_app/module_auth/presistance/auth_prefs_helper.dart';
-import 'package:sales_beeorder_app/module_auth/repository/auth/auth_repository.dart';
-import 'package:sales_beeorder_app/module_auth/request/login_request/login_request.dart';
-import 'package:sales_beeorder_app/module_auth/request/register_request/register_request.dart';
+
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:sales_beeorder_app/generated/l10n.dart';
+import 'package:sales_beeorder_app/module_auth/enums/auth_status.dart';
+import 'package:sales_beeorder_app/module_auth/exceptions/auth_exception.dart';
+import 'package:sales_beeorder_app/module_auth/manager/auth_manager/auth_manager.dart';
+import 'package:sales_beeorder_app/module_auth/presistance/auth_prefs_helper.dart';
+import 'package:sales_beeorder_app/module_auth/request/login_request/login_request.dart';
+import 'package:sales_beeorder_app/module_auth/response/login_response/login_response.dart';
+import 'package:sales_beeorder_app/utils/helpers/status_code_helper.dart';
 
-@injectable
+@Injectable()
 class AuthService {
   final AuthPrefsHelper _prefsHelper;
-  final AuthRepository _authManager;
+  final AuthManager _authManager;
   final PublishSubject<AuthStatus> _authSubject = PublishSubject<AuthStatus>();
 
   AuthService(
@@ -21,53 +23,43 @@ class AuthService {
 
   bool get isLoggedIn => _prefsHelper.isSignedIn();
 
-
   Stream<AuthStatus> get authListener => _authSubject.stream;
   String get username => _prefsHelper.getUsername() ?? '';
-  String get password => _prefsHelper.getPassword() ?? '';
 
-
-  Future<void> loginApi(String username) async {
-    WebServiceResponse? loginResult = await _authManager.getToken(LoginRequest(
-      mobile: username,
-
+  Future<void> loginApi(String username, String password) async {
+    LoginResponse? loginResult = await _authManager.login(LoginRequest(
+      username: username,
+      password: password,
     ));
     if (loginResult == null) {
       await logout();
-      _authSubject.addError('Connection error');
-      // throw AuthorizationException('Connection error');
-    } else if (!loginResult.success) {
-      print('errrrorrr');
+      _authSubject.addError(S.current.networkError);
+      throw AuthorizationException(S.current.networkError);
+    } else if (loginResult.statusCode == '401') {
       await logout();
-      _authSubject.addError(loginResult.errorMessage ?? '');
+      _authSubject.addError(S.current.invalidCredentials);
+      throw AuthorizationException(S.current.networkError);
+    } else if (loginResult.token == null) {
+      await logout();
+      _authSubject.addError(StatusCodeHelper.getStatusCodeMessages(
+          loginResult.statusCode ?? '0'));
+      throw AuthorizationException(StatusCodeHelper.getStatusCodeMessages(
+          loginResult.statusCode ?? '0'));
     }
-    else{
-    // LoginResponse response = LoginResponse.fromJson(loginResult?.data.insideData);
     _prefsHelper.setUsername(username);
-    // _prefsHelper.setPassword(password);
-    // _prefsHelper.setToken(response.token);
-    _prefsHelper.setToken('eT8zP0H-RW-X89o7zBLUcZ:APA91bEpc7ghF4EoWNILCHs6r0VtYdWFFX_x61IqH-dNRiMbXcyVoOzwlxlQEUKqenbzNJDYPgJDORqgYmCb-F6LiCXtcjwT8s07Q_E0-f7ufwgeEeKZtDm9dWekMFi1rDgyhcFbyyfl');
-    authStatusMap[AuthStatus.AUTHORIZED_CLIENT]=loginResult.errorMessage ?? '';
-    _authSubject.add(AuthStatus.AUTHORIZED_CLIENT);}
-  }
-
-  Future<void> signUpApi(RegisterRequest request) async {
-    WebServiceResponse? signResult = await _authManager.registerClient(request);
-    if (signResult == null) {
-      _authSubject.addError('Connection error');
-      // throw AuthorizationException('Connection error');
-    } else if (!signResult.success) {
-      _authSubject.addError(signResult.errorMessage ?? '');
-      // throw AuthorizationException(signResult.errorMessage);
-    }else {
-      authStatusMap[AuthStatus.CONFIRM_CODE]=signResult.errorMessage ??' ';
-      _authSubject.add(AuthStatus.CONFIRM_CODE,);
-    }
+    _prefsHelper.setPassword(password);
+    _prefsHelper.setToken(loginResult.token);
+    _authSubject.add(AuthStatus.AUTHORIZED);
   }
 
 
   Future<String?> getToken() async {
     try {
+      var tokenDate = _prefsHelper.getTokenDate();
+      var diff = DateTime.now().difference(tokenDate).inMinutes;
+      if (diff.abs() > 55) {
+        throw TokenExpiredException('Token is created $diff minutes ago');
+      }
       return _prefsHelper.getToken();
     } on AuthorizationException {
       _prefsHelper.deleteToken();
@@ -88,7 +80,7 @@ class AuthService {
     if (username != null && password != null) {
       await loginApi(
         username,
-        // password,
+        password,
       );
     }
     var token = await getToken();

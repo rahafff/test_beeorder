@@ -6,15 +6,6 @@ import 'package:sales_beeorder_app/module_auth/exceptions/auth_exception.dart';
 class AuthPrefsHelper {
   var box = Hive.box('Authorization');
 
-  void setClientId(int? username) {
-    box.put('clientID', username);
-  }
-
-  int? getClientId() {
-    return box.get('clientID');
-  }
-
-
   void setUsername(String username) {
     box.put('username', username);
   }
@@ -42,6 +33,12 @@ class AuthPrefsHelper {
   void clearUserCreated() {
     box.delete('created');
   }
+
+  void setUserCompetedProfile(String status) {
+    box.put('account status', status);
+  }
+
+
 
   bool isSignedIn() {
     try {

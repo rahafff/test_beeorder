@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:sales_beeorder_app/generated/l10n.dart';
 import 'package:sales_beeorder_app/module_resturants/response/restaurant_response.dart';
 import 'package:sales_beeorder_app/module_resturants/ui/widget/view_resturant_sheet.dart';
+import 'package:sales_beeorder_app/utils/helpers/date_converter.dart';
 
 class RestaurantCard extends StatefulWidget {
-  final RestaurantResponse model;
-    RestaurantCard({  required this.model,  })  ;
+  final OrderResponse model;
+    RestaurantCard({  required this.model,  });
 
   @override
   State<RestaurantCard> createState() => _RestaurantCardState();
 }
 
 class _RestaurantCardState extends State<RestaurantCard> {
+
+  var createDate;
+
+
+  @override
+  void initState() {
+    createDate = DateFormat.jm()
+        .format(DateHelper.convert(widget.model.createdAt?.timestamp)) +
+        ' 📅 ' +
+        DateFormat.Md()
+            .format(DateHelper.convert(widget.model.createdAt?.timestamp));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -34,14 +50,6 @@ class _RestaurantCardState extends State<RestaurantCard> {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-//                   boxShadow: [
-//                 BoxShadow(
-//                   color: Colors.grey.withOpacity(0.3),
-// //              spreadRadius: 8,
-//                   blurRadius: 2,
-//                   offset: Offset(0, 3), // changes position of shadow
-//                 ),
-//               ]
               ),
               child: Padding(
                 padding: const EdgeInsets.all(3.0),
@@ -63,13 +71,25 @@ class _RestaurantCardState extends State<RestaurantCard> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("#"+ '${widget.model.id}'?? '',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                Text(widget.model.createdAt ?? '', ),
+                                Text(createDate ),
                               ],
                             ),
                             SizedBox(height: 12,),
-                            Text(widget.model.costumerName ?? ''),
-                              SizedBox(height: 12,),
-                            Text('${widget.model.price}' + ' S.A' ),
+                              Row(children: [
+                                Row(
+                                  children: [
+                                    Text(S.of(context).clientName +" : " , style: TextStyle(fontWeight: FontWeight.bold),),
+                                    Text(widget.model.clientName ?? ''),
+                                  ],
+                                ),
+                                SizedBox(height: 12,),
+                                Row(
+                                  children: [
+                                    Text(S.of(context).clientNumber +" : " , style: TextStyle(fontWeight: FontWeight.bold),),
+                                    Text('${widget.model.clientNumber}'),
+                                  ],
+                                ),
+                              ],)
                           ],),
                         ),
 
@@ -82,7 +102,7 @@ class _RestaurantCardState extends State<RestaurantCard> {
             ),
           ),
         ),
-     widget.model.isDone ? Container():   Align(
+     widget.model.status == 2 ? Container():   Align(
           alignment: AlignmentDirectional.centerEnd,
           heightFactor: 3.0,
           child: Container(decoration: BoxDecoration(

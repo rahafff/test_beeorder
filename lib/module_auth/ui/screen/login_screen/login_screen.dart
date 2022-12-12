@@ -82,11 +82,11 @@ class LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void loginClient(String mobile,  ) {
-    widget._stateManager.loginClient(mobile, this);
+  void loginClient(String username, String password ) {
+    widget._stateManager.loginClient(username,password, this);
   }
 
-  void moveToHomePage() {
+  void moveToNext() {
     Navigator.pushNamedAndRemoveUntil(context, RestaurantRoutes.VIEW_ALL,(route) => false,);
   }
 

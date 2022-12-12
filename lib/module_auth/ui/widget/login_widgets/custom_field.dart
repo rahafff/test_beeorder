@@ -76,7 +76,7 @@ class _CustomLoginFormFieldState extends State<CustomLoginFormField> {
                       } else if (value.isEmpty) {
                         clean = false;
                         return S.of(context).pleaseCompleteField;
-                      } else if (value.length < 6 && widget.password) {
+                      } else if (value.length < 2 && widget.password) {
                         clean = false;
                         return S.of(context).passwordIsTooShort;
                       }  else {

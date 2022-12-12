@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bicycle": MessageLookupByLibrary.simpleMessage("دراجة نارية"),
         "chooseYourVehicle":
             MessageLookupByLibrary.simpleMessage("أختر نوع عربتك"),
+        "clientName": MessageLookupByLibrary.simpleMessage("أسم الزبون"),
+        "clientNumber": MessageLookupByLibrary.simpleMessage("رقم الزبون"),
         "confirm": MessageLookupByLibrary.simpleMessage(" تؤكد"),
         "createAccount": MessageLookupByLibrary.simpleMessage(" إصنع حساب"),
         "darkMode": MessageLookupByLibrary.simpleMessage(" الوضع المظلم"),
@@ -41,6 +43,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" خطأ في تحميل البيانات"),
         "firstName": MessageLookupByLibrary.simpleMessage(" الاسم الاول"),
         "iHaveAnAccount": MessageLookupByLibrary.simpleMessage(" لدي حساب"),
+        "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+            "هناك خطأ في كلمة السر أو اسم المستخدم"),
         "language": MessageLookupByLibrary.simpleMessage(" لغة"),
         "lastName": MessageLookupByLibrary.simpleMessage(" اللقب"),
         "licensePlate": MessageLookupByLibrary.simpleMessage("لوحة الترخيص"),
@@ -52,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage(" اسم"),
         "nameIsRequired": MessageLookupByLibrary.simpleMessage(" مطلوب اسم"),
         "nearest": MessageLookupByLibrary.simpleMessage(" الأقرب"),
+        "networkError": MessageLookupByLibrary.simpleMessage(
+            "هناك مشكلة بالاتصال بالشبكة الرجاء إعادة المحاولة لاحقا"),
         "next": MessageLookupByLibrary.simpleMessage(" التالي"),
         "password": MessageLookupByLibrary.simpleMessage(" كلمة المرور"),
         "passwordIsTooShort":

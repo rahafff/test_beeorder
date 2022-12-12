@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bicycle": MessageLookupByLibrary.simpleMessage("Bicycle"),
         "chooseYourVehicle":
             MessageLookupByLibrary.simpleMessage("Choose Your vehicle"),
+        "clientName": MessageLookupByLibrary.simpleMessage("Client name"),
+        "clientNumber": MessageLookupByLibrary.simpleMessage("Client number"),
         "confirm": MessageLookupByLibrary.simpleMessage("confirm"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark mode"),
@@ -42,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "firstName": MessageLookupByLibrary.simpleMessage("First name"),
         "iHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("I have an account"),
+        "invalidCredentials":
+            MessageLookupByLibrary.simpleMessage("Wrong username or password"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
         "licensePlate": MessageLookupByLibrary.simpleMessage("license plate"),
@@ -54,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameIsRequired":
             MessageLookupByLibrary.simpleMessage("Name is required"),
         "nearest": MessageLookupByLibrary.simpleMessage("Nearest"),
+        "networkError": MessageLookupByLibrary.simpleMessage(
+            "There is problem with your connection , please try again"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordIsTooShort":

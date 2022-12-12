@@ -37,6 +37,11 @@
     "setting": "Setting",
     "licensePlate": "license plate",
     "motor": "Motor",
-    "bicycle": "Bicycle"
+    "bicycle": "Bicycle",
 
+    "networkError": "There is problem with your connection , please try again",
+    "invalidCredentials": "Wrong username or password",
+
+    "clientName": "Client name",
+    "clientNumber": "Client number"
 }

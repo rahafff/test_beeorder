@@ -12,25 +12,23 @@ class RestaurantRepository {
 
   RestaurantRepository(this._apiClient, this._authService);
 
-  Future<WebServiceResponse?> getRestaurant() async {
+  Future<WebServiceResponse?> getAllOrder() async {
     var token = await _authService.getToken();
-    WebServiceResponse? response = await _apiClient.get(
+    dynamic  response = await _apiClient.get(
       Urls.GET_RESTAURANT,
-      headers: {'device_id':'$token'},
-      queryParams: {'format':'json'}
+        headers: {'Authorization': 'Bearer ' + '$token'},
     );
     if (response == null) return null;
-    return response;
+    return WebServiceResponse.fromJson(response);
   }
 
-  Future<WebServiceResponse?> addNewRestaurant(
-      CreateRestaurantRequest request) async {
+  Future<WebServiceResponse?> changeOrderState(
+     String id) async {
     var token = await _authService.getToken();
-    WebServiceResponse? response = await _apiClient.post(
-      Urls.ADD_RESTAURANT,
-      request.toJson(),
-      headers: {'device_id':'$token'},
-      jsonDataType: true
+    dynamic? response = await _apiClient.put(
+      Urls.CHANGE_ORDER_STATUS + '${id}',
+      {},
+      headers: {'Authorization': 'Bearer ' + '$token'},
     );
     if (response == null) return null;
     return response;
