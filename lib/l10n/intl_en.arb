@@ -15,10 +15,10 @@
     "chooseYourVehicle": "Choose Your vehicle",
     "next": "Next",
 
-    "restaurant": "Restaurants",
+    "orders": "Orders",
     "warning": "Warning",
     "pleaseCompleteField": "Please fill the field",
-    "confirm": "confirm",
+    "confirm": "Confirm",
     "firstName": "First name",
     "lastName": "Last name",
     "createAccount": "Create account",
@@ -43,5 +43,17 @@
     "invalidCredentials": "Wrong username or password",
 
     "clientName": "Client name",
-    "clientNumber": "Client number"
+    "clientNumber": "Client number",
+
+    "payment": "Payment",
+    "cash": "Cash",
+    "creditCard": "Credit card",
+
+    "deliveryDate": "Delivery date",
+    "createDate": "Create date",
+    "currentOrder": "Current Order",
+    "historyOrder": "History order",
+    "cancel": "Cancel",
+    "confirmMessage": "Are you sure to complete the order? "
+
 }

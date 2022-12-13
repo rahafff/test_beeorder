@@ -25,13 +25,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewRestaurant":
             MessageLookupByLibrary.simpleMessage(" اضافة مطعم جديد"),
         "bicycle": MessageLookupByLibrary.simpleMessage("دراجة نارية"),
+        "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "cash": MessageLookupByLibrary.simpleMessage("نقدي"),
         "chooseYourVehicle":
             MessageLookupByLibrary.simpleMessage("أختر نوع عربتك"),
         "clientName": MessageLookupByLibrary.simpleMessage("أسم الزبون"),
         "clientNumber": MessageLookupByLibrary.simpleMessage("رقم الزبون"),
         "confirm": MessageLookupByLibrary.simpleMessage(" تؤكد"),
+        "confirmMessage": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد من إكمال الطلب؟"),
         "createAccount": MessageLookupByLibrary.simpleMessage(" إصنع حساب"),
+        "createDate": MessageLookupByLibrary.simpleMessage("تاريخ الإنشاء"),
+        "creditCard": MessageLookupByLibrary.simpleMessage("بطاقة"),
+        "currentOrder": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
         "darkMode": MessageLookupByLibrary.simpleMessage(" الوضع المظلم"),
+        "deliveryDate": MessageLookupByLibrary.simpleMessage("تاريخ التوصيل"),
         "details": MessageLookupByLibrary.simpleMessage(" تفاصيل"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage(" ليس لديك حساب؟ "),
@@ -42,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLoadingData":
             MessageLookupByLibrary.simpleMessage(" خطأ في تحميل البيانات"),
         "firstName": MessageLookupByLibrary.simpleMessage(" الاسم الاول"),
+        "historyOrder": MessageLookupByLibrary.simpleMessage("الطلبات الحالية"),
         "iHaveAnAccount": MessageLookupByLibrary.simpleMessage(" لدي حساب"),
         "invalidCredentials": MessageLookupByLibrary.simpleMessage(
             "هناك خطأ في كلمة السر أو اسم المستخدم"),
@@ -59,16 +68,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "networkError": MessageLookupByLibrary.simpleMessage(
             "هناك مشكلة بالاتصال بالشبكة الرجاء إعادة المحاولة لاحقا"),
         "next": MessageLookupByLibrary.simpleMessage(" التالي"),
+        "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "password": MessageLookupByLibrary.simpleMessage(" كلمة المرور"),
         "passwordIsTooShort":
             MessageLookupByLibrary.simpleMessage(" كلمة المرور قصيرة جدا"),
+        "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage(" رقم الهاتف"),
         "pleaseCompleteField":
             MessageLookupByLibrary.simpleMessage(" الرجاء ملء الحقل"),
         "pleaseEnterYourEmail": MessageLookupByLibrary.simpleMessage(
             " رجاءا أدخل بريدك الإلكتروني"),
         "restName": MessageLookupByLibrary.simpleMessage(" اسم المطعم"),
-        "restaurant": MessageLookupByLibrary.simpleMessage(" مطاعم"),
         "searchForName": MessageLookupByLibrary.simpleMessage("أبحث عن اسم"),
         "setting": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "signOut": MessageLookupByLibrary.simpleMessage(" خروج"),

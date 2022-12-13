@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_beeorder_app/generated/l10n.dart';
 import 'package:sales_beeorder_app/module_resturants/response/restaurant_response.dart';
 import 'package:sales_beeorder_app/module_resturants/ui/screens/restaurant_screen.dart';
 import 'package:sales_beeorder_app/module_resturants/ui/widget/restaurant_card.dart';
@@ -41,12 +42,12 @@ class RestaurantsListSuccess extends States {
               tabs: [
                 // first tab [you can add an icon using the icon property]
                 Tab(
-                  text: 'Current Order',
+                  text: S.of(context).currentOrder
                 ),
 
                 // second tab [you can add an icon using the icon property]
                 Tab(
-                  text: 'History Order',
+                    text: S.of(context).historyOrder
                 ),
               ],
             ),
@@ -57,13 +58,22 @@ class RestaurantsListSuccess extends States {
               controller: screenState.tabController,
               children: [
                 // first tab bar view widget
-               ListView.builder(itemBuilder: (context, index) =>
-                   RestaurantCard(model: currentOrders[index]),shrinkWrap: true,itemCount: currentOrders.length,),
-               ListView.builder(itemBuilder: (context, index) =>
-                   RestaurantCard(model: historyOrders[index]),shrinkWrap: true,itemCount: historyOrders.length,),
-
-
-
+               RefreshIndicator(
+                 onRefresh: () async{
+                   screenState.getRestaurant(true);
+                 },
+                 child: ListView.builder(itemBuilder: (context, index) =>
+                     RestaurantCard(model: currentOrders[index],orderCompleted: (){
+                       screenState.changeStatus(currentOrders[index].id.toString());
+                     }),shrinkWrap: true,itemCount: currentOrders.length,),
+               ),
+               RefreshIndicator(
+                 onRefresh: () async{
+                   screenState.getRestaurant(true);
+                 },
+                 child: ListView.builder(itemBuilder: (context, index) =>
+                     RestaurantCard(model: historyOrders[index],orderCompleted: (){}),shrinkWrap: true,itemCount: historyOrders.length,),
+               ),
               ],
             ),
           ),

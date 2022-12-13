@@ -31,15 +31,15 @@ class CustomAlertDialog extends StatelessWidget {
 
 class CustomDialogBox extends StatefulWidget {
   final String title;
+  final VoidCallback  onTap;
 
-  const CustomDialogBox({required this.title});
+  const CustomDialogBox({required this.title, required this.onTap});
 
   @override
   _CustomDialogBoxState createState() => _CustomDialogBoxState();
 }
 
 class _CustomDialogBoxState extends State<CustomDialogBox> {
-  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +60,18 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
           padding: EdgeInsets.only(left: 12, right: 12, top: 40),
           margin: EdgeInsets.only(top: 40),
           decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
               shape: BoxShape.rectangle,
-              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
                     color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
-              ]),
+              ]
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -78,20 +81,32 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 ),
               ),
 
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                TextButton(onPressed: (){
+                  Navigator.pop(context);
+                }, child: Text(S.of(context).cancel,style: TextStyle(color: Colors.red),)),
+                  TextButton(onPressed: (){
+                    Navigator.pop(context);
+                  widget.onTap();
+                }, child: Text(S.of(context).confirm,style: TextStyle(color: Colors.green)))
+              ],)
+
             ],
           ),
         ),
-        // Positioned(
-        //   left: 5,
-        //   right: 5,
-        //   child: CircleAvatar(
-        //     backgroundColor: Colors.transparent,
-        //     radius: 40,
-        //     child: ClipRRect(
-        //         borderRadius: BorderRadius.all(Radius.circular(12)),
-        //         child: Image.asset(ImageAsset.PASSWORD)),
-        //   ),
-        // ),
+        Positioned(
+          left: 5,
+          right: 5,
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 40,
+            child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                child: Image.asset(ImageAsset.STOP)),
+          ),
+        ),
       ],
     );
   }

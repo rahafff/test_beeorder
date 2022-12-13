@@ -13,7 +13,7 @@
     "nameIsRequired": " مطلوب اسم",
     "chooseYourVehicle": "أختر نوع عربتك",
     "next": " التالي",
-    "restaurant": " مطاعم",
+    "orders": "الطلبات",
     "warning": " تحذير",
     "pleaseCompleteField": " الرجاء ملء الحقل",
     "confirm": " تؤكد",
@@ -40,5 +40,17 @@
     "invalidCredentials": "هناك خطأ في كلمة السر أو اسم المستخدم",
 
     "clientName": "أسم الزبون",
-    "clientNumber": "رقم الزبون"
+    "clientNumber": "رقم الزبون",
+
+    "payment": "الدفع",
+    "cash": "نقدي",
+    "creditCard": "بطاقة",
+
+    "deliveryDate": "تاريخ التوصيل",
+    "createDate": "تاريخ الإنشاء",
+    "currentOrder": "الطلبات الجديدة",
+    "historyOrder": "الطلبات الحالية",
+    "cancel": "إلغاء",
+    "confirmMessage": "هل أنت متأكد من إكمال الطلب؟"
+
 }

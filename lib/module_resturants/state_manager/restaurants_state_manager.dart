@@ -2,6 +2,7 @@ import 'package:sales_beeorder_app/abstracts/states/error_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sales_beeorder_app/generated/l10n.dart';
+import 'package:tip_dialog/tip_dialog.dart';
 import '../../abstracts/states/loading_state.dart';
 import '../../abstracts/states/state.dart';
 import '../repository/resturant_repository.dart';
@@ -16,7 +17,8 @@ class RestaurantCubit extends Cubit<States> {
   RestaurantCubit(this._occasionsRepository) : super(LoadingState());
 
   getRestaurant(RestaurantsScreenState screenState , bool isLoading) {
-    emit(LoadingState());
+    if(isLoading)
+     emit(LoadingState());
     _occasionsRepository.getAllOrder().then((value) {
       if(value == null){
         emit(ErrorState(errMsg: S.current.networkError, retry: (){}));
@@ -42,11 +44,30 @@ class RestaurantCubit extends Cubit<States> {
 
   }
 
-  createRestaurant(
+  changeOrderState(
       RestaurantsScreenState screenState, String id) {
-    emit(LoadingState());
+        TipDialogHelper.loading(S.current.loading);
     _occasionsRepository.changeOrderState(id).then((value) {
-
+      if(value == null){
+        TipDialogHelper.fail(S.current.networkError);
+      }else if (value.statusCode == '200'){
+        TipDialogHelper.success("Order Done");
+        List<OrderResponse> currentOr = [];
+        List<OrderResponse> historyOrd = [];
+        if(value.data != null) {
+          for (var item in value.data) {
+            OrderResponse re = OrderResponse.fromJson(item);
+            if(re.status == 1)
+              currentOr.add(OrderResponse.fromJson(item));
+            else{
+              historyOrd.add(OrderResponse.fromJson(item));
+            }
+          }
+        }
+        emit(RestaurantsListSuccess(screenState: screenState,currentOrders: currentOr,historyOrders: historyOrd));
+      }else {
+        TipDialogHelper.fail(value.msg ?? '');
+      }
     });
   }
 }

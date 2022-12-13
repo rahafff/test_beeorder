@@ -17,9 +17,11 @@ class OrderResponse {
     this.updatedAt,
     this.status,
     this.fromStoreName,
-   required this.finishOrder
+   required this.finishOrder,
+    this.deliveryTime,
+    this.payment
   });
-
+  bool finishOrder = false;
   int? id;
   int? type;
   String? clientName;
@@ -31,7 +33,10 @@ class OrderResponse {
   AtedAt? updatedAt;
   int? status;
   String? fromStoreName;
-  bool finishOrder = false;
+
+  int? payment;
+  String? deliveryTime;
+
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) => OrderResponse(
     id: json["id"],
@@ -43,8 +48,10 @@ class OrderResponse {
     clientLocationStr: json["clientLocationStr"],
     createdAt: AtedAt.fromJson(json["createdAt"]),
     updatedAt: AtedAt.fromJson(json["updatedAt"]),
+    deliveryTime: json["deliveryTime"],
     status: json["status"],
     fromStoreName: json["fromStoreName"],
+    payment: json["payment"],
     finishOrder: false
   );
 

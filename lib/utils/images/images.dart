@@ -6,6 +6,7 @@ class ImageAsset {
   static const NO_CONNECTION = ROOT + 'no-connection.png';
   static const PAYMENT = ROOT + 'payment.png';
   static const SPLASH = ROOT + 'splash.png';
+  static const STOP = ROOT + 'stop.png';
 
 
 }

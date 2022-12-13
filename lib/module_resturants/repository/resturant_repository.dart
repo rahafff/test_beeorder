@@ -25,13 +25,13 @@ class RestaurantRepository {
   Future<WebServiceResponse?> changeOrderState(
      String id) async {
     var token = await _authService.getToken();
-    dynamic? response = await _apiClient.put(
+    dynamic response = await _apiClient.post(
       Urls.CHANGE_ORDER_STATUS + '${id}',
       {},
       headers: {'Authorization': 'Bearer ' + '$token'},
     );
     if (response == null) return null;
-    return response;
+    return WebServiceResponse.fromJson(response);
   }
 
 }

@@ -33,9 +33,23 @@ class ViewRestaurantDetails extends StatelessWidget {
                 leading: Icon(Icons.location_city, color: Colors.white),
               ),
             ),
-            ListTile(
-              title: Text(S.of(context).name),
-              subtitle: Text(model.clientName ?? ''),
+            Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: ListTile(
+                    title: Text(S.of(context).clientName),
+                    subtitle: Text(model.clientName ?? ''),
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: ListTile(
+                    title: Text(S.of(context).clientNumber),
+                    subtitle: Text(model.clientNumber ?? ''),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 5,
@@ -43,6 +57,10 @@ class ViewRestaurantDetails extends StatelessWidget {
             ListTile(
               title: Text(S.of(context).details),
               subtitle: Text(model.details ?? ''),
+            ),
+            ListTile(
+              title: Text(S.of(context).payment),
+              subtitle: Text(model.payment==1 ? S.of(context).cash :S.of(context).creditCard),
             ),
 
 

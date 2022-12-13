@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Image.asset(ImageAsset.SPLASH ,height: 300,),
               SizedBox(height: 20,),
               Text(
-                'Cashier App',
+                'Masdar Menu',
                 style: TextStyle(
                     color: Color(0xFFcccccf),
                     fontWeight: FontWeight.bold,

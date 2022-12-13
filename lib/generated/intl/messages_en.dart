@@ -25,13 +25,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewRestaurant":
             MessageLookupByLibrary.simpleMessage("Add new restaurant"),
         "bicycle": MessageLookupByLibrary.simpleMessage("Bicycle"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cash": MessageLookupByLibrary.simpleMessage("Cash"),
         "chooseYourVehicle":
             MessageLookupByLibrary.simpleMessage("Choose Your vehicle"),
         "clientName": MessageLookupByLibrary.simpleMessage("Client name"),
         "clientNumber": MessageLookupByLibrary.simpleMessage("Client number"),
-        "confirm": MessageLookupByLibrary.simpleMessage("confirm"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure to complete the order? "),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
+        "createDate": MessageLookupByLibrary.simpleMessage("Create date"),
+        "creditCard": MessageLookupByLibrary.simpleMessage("Credit card"),
+        "currentOrder": MessageLookupByLibrary.simpleMessage("Current Order"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "deliveryDate": MessageLookupByLibrary.simpleMessage("Delivery date"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("you don\'t have account? "),
@@ -42,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLoadingData":
             MessageLookupByLibrary.simpleMessage("Error Loading Data"),
         "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+        "historyOrder": MessageLookupByLibrary.simpleMessage("History order"),
         "iHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("I have an account"),
         "invalidCredentials":
@@ -61,16 +70,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "networkError": MessageLookupByLibrary.simpleMessage(
             "There is problem with your connection , please try again"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordIsTooShort":
             MessageLookupByLibrary.simpleMessage("Password is too short"),
+        "payment": MessageLookupByLibrary.simpleMessage("Payment"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "pleaseCompleteField":
             MessageLookupByLibrary.simpleMessage("Please fill the field"),
         "pleaseEnterYourEmail":
             MessageLookupByLibrary.simpleMessage("Please Enter Your Email"),
         "restName": MessageLookupByLibrary.simpleMessage("Restaurant name"),
-        "restaurant": MessageLookupByLibrary.simpleMessage("Restaurants"),
         "searchForName":
             MessageLookupByLibrary.simpleMessage("Search for name"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),

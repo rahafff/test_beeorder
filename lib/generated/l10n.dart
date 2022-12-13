@@ -180,11 +180,11 @@ class S {
     );
   }
 
-  /// `Restaurants`
-  String get restaurant {
+  /// `Orders`
+  String get orders {
     return Intl.message(
-      'Restaurants',
-      name: 'restaurant',
+      'Orders',
+      name: 'orders',
       desc: '',
       args: [],
     );
@@ -210,10 +210,10 @@ class S {
     );
   }
 
-  /// `confirm`
+  /// `Confirm`
   String get confirm {
     return Intl.message(
-      'confirm',
+      'Confirm',
       name: 'confirm',
       desc: '',
       args: [],
@@ -445,6 +445,96 @@ class S {
     return Intl.message(
       'Client number',
       name: 'clientNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment`
+  String get payment {
+    return Intl.message(
+      'Payment',
+      name: 'payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash`
+  String get cash {
+    return Intl.message(
+      'Cash',
+      name: 'cash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Credit card`
+  String get creditCard {
+    return Intl.message(
+      'Credit card',
+      name: 'creditCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery date`
+  String get deliveryDate {
+    return Intl.message(
+      'Delivery date',
+      name: 'deliveryDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create date`
+  String get createDate {
+    return Intl.message(
+      'Create date',
+      name: 'createDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current Order`
+  String get currentOrder {
+    return Intl.message(
+      'Current Order',
+      name: 'currentOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History order`
+  String get historyOrder {
+    return Intl.message(
+      'History order',
+      name: 'historyOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to complete the order? `
+  String get confirmMessage {
+    return Intl.message(
+      'Are you sure to complete the order? ',
+      name: 'confirmMessage',
       desc: '',
       args: [],
     );

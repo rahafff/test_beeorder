@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sales_beeorder_app/module_resturants/request/create_restaurant_request.dart';
 import 'package:sales_beeorder_app/module_settings/setting_routes.dart';
+import 'package:tip_dialog/tip_dialog.dart';
 import '../../../abstracts/states/state.dart';
 import '../../state_manager/restaurants_state_manager.dart';
 
@@ -35,8 +36,8 @@ class RestaurantsScreenState extends State<RestaurantsScreen>  with SingleTicker
   getRestaurant(bool isLoading) {
     widget.cubit.getRestaurant(this,isLoading);
   }
-  createRestaurant(String restaurantRequest) {
-    widget.cubit.createRestaurant(this , restaurantRequest);
+  changeStatus(String id) {
+    widget.cubit.changeOrderState(this , id);
   }
 
 
@@ -55,7 +56,7 @@ class RestaurantsScreenState extends State<RestaurantsScreen>  with SingleTicker
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).restaurant),
+        title: Text(S.of(context).orders),
         actions: [
           InkWell(
             onTap: () {
@@ -72,7 +73,20 @@ class RestaurantsScreenState extends State<RestaurantsScreen>  with SingleTicker
       body: BlocBuilder<RestaurantCubit, States>(
         bloc: widget.cubit,
         builder: (context, state) {
-          return state.getUI(context);
+          return Stack(
+            children: [
+              state.getUI(context),
+              TipDialogContainer(
+                  duration: const Duration(seconds: 2),
+                  outsideTouchable: true,
+                  onOutsideTouch: (Widget tipDialog) {
+                    if (tipDialog is TipDialog &&
+                        tipDialog.type == TipDialogType.LOADING) {
+                      TipDialogHelper.dismiss();
+                    }
+                  })
+            ],
+          );
         },
       ),
     );
