@@ -66,156 +66,12 @@ class RestaurantsListSuccess extends States {
                    screenState.getRestaurant(true);
                  },
                  child: ListView.builder(itemBuilder: (context, index) =>
-                     // Slidable(
-                     //   key: const ValueKey(0),
-                     //   endActionPane: ActionPane(
-                     //     motion: const ScrollMotion(),
-                     //
-                     //     dismissible: DismissiblePane(onDismissed: (){
-                     //       screenState.changeStatus('2');
-                     //   },confirmDismiss: () async {
-                     //       return await showDialog(
-                     //         context: context,
-                     //         builder: (BuildContext context) {
-                     //           return AlertDialog(
-                     //             title: const Text("Confirm"),
-                     //             content: const Text("Are you sure you wish to delete this item?"),
-                     //             actions: <Widget>[
-                     //               TextButton(
-                     //                   onPressed: () => Navigator.of(context).pop(true),
-                     //                   child: const Text("DELETE")
-                     //               ),
-                     //               TextButton(
-                     //                 onPressed: () => Navigator.of(context).pop(false),
-                     //                 child: const Text("CANCEL"),
-                     //               ),
-                     //             ],
-                     //           );
-                     //         },
-                     //       );
-                     //     },
-                     //
-                     //         motion: ScrollMotion()),
-                     //     children: [
-                     //       SlidableAction(
-                     //         onPressed: (value) {
-                     //         },
-                     //         backgroundColor: Colors.green,
-                     //         foregroundColor: Colors.white,
-                     //         icon: Icons.check,
-                     //         label: S.of(context).accept,
-                     //       ),
-                     //
-                     //     ],
-                     //   ),
-                     //   startActionPane:  ActionPane(
-                     //     children: [
-                     //       SlidableAction(
-                     //         onPressed: (value) {
-                     //         },
-                     //         backgroundColor: Colors.red,
-                     //         foregroundColor: Colors.white,
-                     //         icon: Icons.delete,
-                     //         label: S.of(context).reject,
-                     //       ),
-                     //
-                     //     ],
-                     //     motion: const ScrollMotion(),
-                     //     dismissible: DismissiblePane(onDismissed: () {
-                     //       showConfirmAlert(context ,'3');
-                     //     }),
-                     //   ),
-                     //   child: RestaurantCard(model: currentOrders[index],orderCompleted: (){
-                     //     screenState.changeStatus(currentOrders[index].id.toString());
-                     //   }),
-                     // ),
-                 Dismissible(
-                   key: Key(index.toString()),
-                   background: Container(
-                     color: Colors.green,
-                   ),
-                   secondaryBackground:Container(
-                     color: Colors.red,
-                   ) ,
-                   onDismissed: (dir){
-                     dir.index == 3 ?
-                         screenState.changeStatus('2'):
-                     screenState.changeStatus('3');
-                   },
-                   confirmDismiss: (dir) async{
-                     print(dir);
-                     return await showDialog(
-                                 context: context,
-                                 builder: (BuildContext context) {
-                                   return Dialog(
-                                     shape: RoundedRectangleBorder(
-                                       borderRadius: BorderRadius.circular(12),
-                                     ),
-                                     elevation: 0,
-                                     backgroundColor: Colors.transparent,
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Container(
-                                            padding: EdgeInsets.only(left: 12, right: 12, top: 40),
-                                            margin: EdgeInsets.only(top: 40),
-                                            decoration: BoxDecoration(
-                                                color: Theme.of(context).cardColor,
-                                                shape: BoxShape.rectangle,
-                                                borderRadius: BorderRadius.circular(12),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
-                                                ]
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                   dir.index == 3 ? S.of(context).confirmMessage:
-                                                   S.of(context).confirmCancelMessage,
-                                                    style: TextStyle(fontWeight: FontWeight.w600),
-                                                  ),
-                                                ),
-
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: [
-                                                    TextButton(onPressed: (){
-                                                      Navigator.of(context).pop(false);
-                                                    }, child: Text(S.of(context).cancel,style: TextStyle(color: Colors.red),)),
-                                                    TextButton(onPressed: (){
-                                                      Navigator.of(context).pop(true);
-                                                    }, child: Text(S.of(context).confirm,style: TextStyle(color: Colors.green)))
-                                                  ],)
-
-                                              ],
-                                            ),
-                                          ),
-                                          Positioned(
-                                            left: 5,
-                                            right: 5,
-                                            child: CircleAvatar(
-                                              backgroundColor: Colors.transparent,
-                                              radius: 40,
-                                              child: ClipRRect(
-                                                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                                                  child: Image.asset(ImageAsset.STOP)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                   );
-                                 },
-                               );
-                   },
-                   child: RestaurantCard(model: currentOrders[index],orderCompleted: (){
-                     screenState.changeStatus(currentOrders[index].id.toString());
-                   }),
-                 ),
+                     RestaurantCard(model: currentOrders[index],
+                         orderCompleted: (){
+                           showConfirmAlert(context ,true,index);
+                         },orderReject: (){
+                           showConfirmAlert(context ,false,index);
+                         }),
                    shrinkWrap: true,itemCount: currentOrders.length,),
                ),
                RefreshIndicator(
@@ -223,7 +79,10 @@ class RestaurantsListSuccess extends States {
                    screenState.getRestaurant(true);
                  },
                  child: ListView.builder(itemBuilder: (context, index) =>
-                     RestaurantCard(model: historyOrders[index],orderCompleted: (){}),shrinkWrap: true,itemCount: historyOrders.length,),
+                     RestaurantCard(
+                         orderCompleted: (){},
+                         orderReject: (){},
+                         model: historyOrders[index]),shrinkWrap: true,itemCount: historyOrders.length,),
                ),
               ],
             ),
@@ -232,37 +91,80 @@ class RestaurantsListSuccess extends States {
       ),
     );
   }
-  showConfirmAlert(BuildContext context,String type) async {
-  return await   showDialog(
-        context: context,
-        builder: (context) => CustomDialogBox(
-          onCancelTap: (){
-            Navigator.of(context).pop(false);
-          },
-            title: S.of(context).confirmMessage,
-            onConfirmTap: () {
-              Navigator.of(context).pop(true);
-            }));
-  }
-  showConfirm2Alert(BuildContext context,String type) async {
-  return await   showDialog<bool>(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text("Confirm"),
-        content: const Text("Are you sure you wish to delete this item?"),
-        actions: <Widget>[
-          TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: const Text("DELETE")
+  showConfirmAlert(BuildContext context, bool isAccept ,int index){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: const Text("CANCEL"),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(left: 12, right: 12, top: 40),
+                margin: EdgeInsets.only(top: 40),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
+                    ]
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        isAccept ? S.of(context).confirmMessage:
+                        S.of(context).confirmCancelMessage,
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        TextButton(onPressed: (){
+                          Navigator.pop(context);
+                        }, child: Text(S.of(context).cancel,style: TextStyle(color: Colors.red),)),
+                        TextButton(onPressed: (){
+                          Navigator.pop(context);
+                          if(isAccept) {
+                            screenState.changeStatus(currentOrders[index].id.toString(),2.toString());
+                          }
+                         else{
+                            screenState.changeStatus(currentOrders[index].id.toString(),0.toString());
+                            screenState.sendWhatsapp(currentOrders[index].clientNumber ?? '0');
+                          }
+                        }, child: Text(S.of(context).confirm,style: TextStyle(color: Colors.green)))
+                      ],)
+
+                  ],
+                ),
+              ),
+              Positioned(
+                left: 5,
+                right: 5,
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 40,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      child: Image.asset(ImageAsset.STOP)),
+                ),
+              ),
+            ],
           ),
-        ],
-      );
-    },
-  );
+        );
+      },
+    );
   }
 }

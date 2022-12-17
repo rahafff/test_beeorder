@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sales_beeorder_app/module_resturants/response/restaurant_response.dart';
 import '../../../generated/l10n.dart';
 
@@ -33,35 +35,41 @@ class ViewRestaurantDetails extends StatelessWidget {
                 leading: Icon(Icons.location_city, color: Colors.white),
               ),
             ),
-            Row(
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: ListTile(
-                    title: Text(S.of(context).clientName),
-                    subtitle: Text(model.clientName ?? ''),
-                  ),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: ListTile(
-                    title: Text(S.of(context).clientNumber),
-                    subtitle: Text(model.clientNumber ?? ''),
-                  ),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Flexible(
+            //       flex: 1,
+            //       child: ListTile(
+            //         title: Text(S.of(context).clientName),
+            //         subtitle: Text(model.clientName ?? ''),
+            //       ),
+            //     ),
+            //     Flexible(
+            //       flex: 1,
+            //       child: ListTile(
+            //         title: Text(S.of(context).clientNumber),
+            //         subtitle: Text(model.clientNumber ?? ''),
+            //       ),
+            //     ),
+            //   ],
+            // ),
             SizedBox(
               height: 5,
             ),
-            ListTile(
-              title: Text(S.of(context).details),
-              subtitle: Text(model.details ?? ''),
+            InkWell(onTap: (){
+              Clipboard.setData(ClipboardData(text:model.details)).then((_){
+                Fluttertoast.showToast(msg: S.of(context).copied);
+               });
+            },
+              child: ListTile(
+                title: Text(S.of(context).details),
+                subtitle: Text(model.details ?? ''),
+              ),
             ),
-            ListTile(
-              title: Text(S.of(context).payment),
-              subtitle: Text(model.payment==1 ? S.of(context).cash :S.of(context).creditCard),
-            ),
+            // ListTile(
+            //   title: Text(S.of(context).payment),
+            //   subtitle: Text(model.payment==1 ? S.of(context).cash :S.of(context).creditCard),
+            // ),
 
 
           ],

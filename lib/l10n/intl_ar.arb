@@ -16,7 +16,7 @@
     "orders": "الطلبات",
     "warning": " تحذير",
     "pleaseCompleteField": " الرجاء ملء الحقل",
-    "confirm": " تؤكد",
+    "confirm": " تأكيد",
     "firstName": " الاسم الاول",
     "lastName": " اللقب",
     "createAccount": " إصنع حساب",
@@ -49,7 +49,7 @@
     "deliveryDate": "تاريخ التوصيل",
     "createDate": "تاريخ الإنشاء",
     "currentOrder": "الطلبات الجديدة",
-    "historyOrder": "الطلبات الحالية",
+    "historyOrder": "الطلبات السابقة",
     "cancel": "إلغاء",
     "confirmMessage": "هل أنت متأكد من إكمال الطلب؟",
     "confirmCancelMessage": "هل أنت متأكد من إلغاء الطلب؟",
@@ -57,5 +57,9 @@
     "hand": "يدوي",
     "accept": "قبول",
     "reject": "رفض",
-    "copied": "تم النسخ الى الحافظة"
+    "copied": "تم النسخ الى الحافظة",
+    "menuMasder": "منيو المصدر ",
+    "orderType": "نوع الطلب",
+    "orderDone": "تم إنهاء الطلب"
+
 }

@@ -10,6 +10,13 @@ class AuthPrefsHelper {
     box.put('username', username);
   }
 
+  void setStoreName(String username) {
+    box.put('storename', username);
+  }
+  String?  getStoreName() {
+    return box.get('storename');
+  }
+
   String? getUsername() {
     return box.get('username');
   }

@@ -599,6 +599,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Menu Masdar `
+  String get menuMasder {
+    return Intl.message(
+      'Menu Masdar ',
+      name: 'menuMasder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order type`
+  String get orderType {
+    return Intl.message(
+      'Order type',
+      name: 'orderType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Done`
+  String get orderDone {
+    return Intl.message(
+      'Order Done',
+      name: 'orderDone',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

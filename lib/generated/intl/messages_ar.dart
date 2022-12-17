@@ -33,7 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أختر نوع عربتك"),
         "clientName": MessageLookupByLibrary.simpleMessage("أسم الزبون"),
         "clientNumber": MessageLookupByLibrary.simpleMessage("رقم الزبون"),
-        "confirm": MessageLookupByLibrary.simpleMessage(" تؤكد"),
+        "confirm": MessageLookupByLibrary.simpleMessage(" تأكيد"),
         "confirmCancelMessage": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد من إلغاء الطلب؟"),
         "confirmMessage": MessageLookupByLibrary.simpleMessage(
@@ -56,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" خطأ في تحميل البيانات"),
         "firstName": MessageLookupByLibrary.simpleMessage(" الاسم الاول"),
         "hand": MessageLookupByLibrary.simpleMessage("يدوي"),
-        "historyOrder": MessageLookupByLibrary.simpleMessage("الطلبات الحالية"),
+        "historyOrder": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
         "iHaveAnAccount": MessageLookupByLibrary.simpleMessage(" لدي حساب"),
         "invalidCredentials": MessageLookupByLibrary.simpleMessage(
             "هناك خطأ في كلمة السر أو اسم المستخدم"),
@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage(" تسجيل الدخول"),
         "markRestLocation":
             MessageLookupByLibrary.simpleMessage("حدد موقع المطعم على الخريطة"),
+        "menuMasder": MessageLookupByLibrary.simpleMessage("منيو المصدر "),
         "motor": MessageLookupByLibrary.simpleMessage("دراجة نارية"),
         "name": MessageLookupByLibrary.simpleMessage(" اسم"),
         "nameIsRequired": MessageLookupByLibrary.simpleMessage(" مطلوب اسم"),
@@ -74,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "networkError": MessageLookupByLibrary.simpleMessage(
             "هناك مشكلة بالاتصال بالشبكة الرجاء إعادة المحاولة لاحقا"),
         "next": MessageLookupByLibrary.simpleMessage(" التالي"),
+        "orderDone": MessageLookupByLibrary.simpleMessage("تم إنهاء الطلب"),
+        "orderType": MessageLookupByLibrary.simpleMessage("نوع الطلب"),
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "password": MessageLookupByLibrary.simpleMessage(" كلمة المرور"),
         "passwordIsTooShort":

@@ -60,6 +60,9 @@
     "hand": "Hand",
     "accept": "Accept",
     "reject": "Reject",
-    "copied": "Copied to clipboard"
+    "copied": "Copied to clipboard",
+    "menuMasder": "Menu Masdar ",
+    "orderType": "Order type",
+    "orderDone": "Order Done"
 
 }

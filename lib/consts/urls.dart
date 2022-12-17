@@ -11,5 +11,6 @@ class Urls {
 //-----------Restaurant-----------
   static const String GET_RESTAURANT = DOMAIN + '/emenu/getorders';
   static const String CHANGE_ORDER_STATUS = DOMAIN + '/emenu/resolveorder/';
+  static const String STORE_PROFILE = DOMAIN + '/userprofile';
 
 }

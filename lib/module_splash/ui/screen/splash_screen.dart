@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(ImageAsset.SPLASH ,height: 300,),
+              Image.asset(ImageAsset.LOGO ,height: 300,),
               SizedBox(height: 20,),
               Text(
                 'Masdar Menu',

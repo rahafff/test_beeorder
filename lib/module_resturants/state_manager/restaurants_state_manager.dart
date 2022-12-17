@@ -45,14 +45,14 @@ class RestaurantCubit extends Cubit<States> {
   }
 
   changeOrderState(
-      RestaurantsScreenState screenState, String id) {
-        // TipDialogHelper.loading(S.current.loading);
-    emit(LoadingState());
-    _occasionsRepository.changeOrderState(id).then((value) {
+      RestaurantsScreenState screenState, String id, String statusId) {
+        TipDialogHelper.loading(S.current.loading);
+    // emit(LoadingState());
+    _occasionsRepository.changeOrderState(id , statusId).then((value) {
       if(value == null){
         TipDialogHelper.fail(S.current.networkError);
       }else if (value.statusCode == '200'){
-        TipDialogHelper.success("Order Done");
+        TipDialogHelper.success(S.current.orderDone);
         List<OrderResponse> currentOr = [];
         List<OrderResponse> historyOrd = [];
         if(value.data != null) {

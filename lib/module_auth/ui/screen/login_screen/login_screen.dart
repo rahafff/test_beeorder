@@ -87,7 +87,7 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void moveToNext() {
-    Navigator.pushNamedAndRemoveUntil(context, RestaurantRoutes.VIEW_ALL,(route) => false,);
+    Navigator.pushNamedAndRemoveUntil(context, RestaurantRoutes.VIEW_ALL,(route) => false);
   }
 
 }

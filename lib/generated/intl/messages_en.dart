@@ -68,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "markRestLocation": MessageLookupByLibrary.simpleMessage(
             "Mark Restaurant location on the map"),
+        "menuMasder": MessageLookupByLibrary.simpleMessage("Menu Masdar "),
         "motor": MessageLookupByLibrary.simpleMessage("Motor"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameIsRequired":
@@ -76,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "networkError": MessageLookupByLibrary.simpleMessage(
             "There is problem with your connection , please try again"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "orderDone": MessageLookupByLibrary.simpleMessage("Order Done"),
+        "orderType": MessageLookupByLibrary.simpleMessage("Order type"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordIsTooShort":
