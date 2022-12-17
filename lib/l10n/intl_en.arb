@@ -54,6 +54,12 @@
     "currentOrder": "Current Order",
     "historyOrder": "History order",
     "cancel": "Cancel",
-    "confirmMessage": "Are you sure to complete the order? "
+    "confirmMessage": "Are you sure to complete the order? ",
+    "confirmCancelMessage": "Are you sure to cancel the order? ",
+    "cart": "Cart",
+    "hand": "Hand",
+    "accept": "Accept",
+    "reject": "Reject",
+    "copied": "Copied to clipboard"
 
 }

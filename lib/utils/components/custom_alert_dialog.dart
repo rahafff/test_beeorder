@@ -31,9 +31,10 @@ class CustomAlertDialog extends StatelessWidget {
 
 class CustomDialogBox extends StatefulWidget {
   final String title;
-  final VoidCallback  onTap;
+  final VoidCallback  onConfirmTap;
+  final VoidCallback  onCancelTap;
 
-  const CustomDialogBox({required this.title, required this.onTap});
+  const CustomDialogBox({required this.title, required this.onCancelTap ,required this.onConfirmTap});
 
   @override
   _CustomDialogBoxState createState() => _CustomDialogBoxState();
@@ -85,11 +86,10 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                 TextButton(onPressed: (){
-                  Navigator.pop(context);
+                  widget.onCancelTap();
                 }, child: Text(S.of(context).cancel,style: TextStyle(color: Colors.red),)),
                   TextButton(onPressed: (){
-                    Navigator.pop(context);
-                  widget.onTap();
+                  widget.onConfirmTap();
                 }, child: Text(S.of(context).confirm,style: TextStyle(color: Colors.green)))
               ],)
 

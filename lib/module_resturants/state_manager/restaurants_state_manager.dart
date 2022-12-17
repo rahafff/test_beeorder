@@ -46,7 +46,8 @@ class RestaurantCubit extends Cubit<States> {
 
   changeOrderState(
       RestaurantsScreenState screenState, String id) {
-        TipDialogHelper.loading(S.current.loading);
+        // TipDialogHelper.loading(S.current.loading);
+    emit(LoadingState());
     _occasionsRepository.changeOrderState(id).then((value) {
       if(value == null){
         TipDialogHelper.fail(S.current.networkError);

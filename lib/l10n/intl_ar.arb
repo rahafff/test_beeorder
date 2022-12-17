@@ -51,6 +51,11 @@
     "currentOrder": "الطلبات الجديدة",
     "historyOrder": "الطلبات الحالية",
     "cancel": "إلغاء",
-    "confirmMessage": "هل أنت متأكد من إكمال الطلب؟"
-
+    "confirmMessage": "هل أنت متأكد من إكمال الطلب؟",
+    "confirmCancelMessage": "هل أنت متأكد من إلغاء الطلب؟",
+    "cart": "سلة",
+    "hand": "يدوي",
+    "accept": "قبول",
+    "reject": "رفض",
+    "copied": "تم النسخ الى الحافظة"
 }

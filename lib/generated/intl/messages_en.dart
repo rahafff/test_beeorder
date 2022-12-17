@@ -22,18 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "addNewRestaurant":
             MessageLookupByLibrary.simpleMessage("Add new restaurant"),
         "bicycle": MessageLookupByLibrary.simpleMessage("Bicycle"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cash": MessageLookupByLibrary.simpleMessage("Cash"),
         "chooseYourVehicle":
             MessageLookupByLibrary.simpleMessage("Choose Your vehicle"),
         "clientName": MessageLookupByLibrary.simpleMessage("Client name"),
         "clientNumber": MessageLookupByLibrary.simpleMessage("Client number"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmCancelMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure to cancel the order? "),
         "confirmMessage": MessageLookupByLibrary.simpleMessage(
             "Are you sure to complete the order? "),
+        "copied": MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
         "createDate": MessageLookupByLibrary.simpleMessage("Create date"),
         "creditCard": MessageLookupByLibrary.simpleMessage("Credit card"),
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLoadingData":
             MessageLookupByLibrary.simpleMessage("Error Loading Data"),
         "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+        "hand": MessageLookupByLibrary.simpleMessage("Hand"),
         "historyOrder": MessageLookupByLibrary.simpleMessage("History order"),
         "iHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("I have an account"),
@@ -80,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please fill the field"),
         "pleaseEnterYourEmail":
             MessageLookupByLibrary.simpleMessage("Please Enter Your Email"),
+        "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "restName": MessageLookupByLibrary.simpleMessage("Restaurant name"),
         "searchForName":
             MessageLookupByLibrary.simpleMessage("Search for name"),

@@ -539,6 +539,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you sure to cancel the order? `
+  String get confirmCancelMessage {
+    return Intl.message(
+      'Are you sure to cancel the order? ',
+      name: 'confirmCancelMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cart`
+  String get cart {
+    return Intl.message(
+      'Cart',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hand`
+  String get hand {
+    return Intl.message(
+      'Hand',
+      name: 'hand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message(
+      'Accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message(
+      'Reject',
+      name: 'reject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copied to clipboard`
+  String get copied {
+    return Intl.message(
+      'Copied to clipboard',
+      name: 'copied',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

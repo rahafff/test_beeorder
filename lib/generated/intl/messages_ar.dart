@@ -22,18 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accept": MessageLookupByLibrary.simpleMessage("قبول"),
         "addNewRestaurant":
             MessageLookupByLibrary.simpleMessage(" اضافة مطعم جديد"),
         "bicycle": MessageLookupByLibrary.simpleMessage("دراجة نارية"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "cart": MessageLookupByLibrary.simpleMessage("سلة"),
         "cash": MessageLookupByLibrary.simpleMessage("نقدي"),
         "chooseYourVehicle":
             MessageLookupByLibrary.simpleMessage("أختر نوع عربتك"),
         "clientName": MessageLookupByLibrary.simpleMessage("أسم الزبون"),
         "clientNumber": MessageLookupByLibrary.simpleMessage("رقم الزبون"),
         "confirm": MessageLookupByLibrary.simpleMessage(" تؤكد"),
+        "confirmCancelMessage": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد من إلغاء الطلب؟"),
         "confirmMessage": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد من إكمال الطلب؟"),
+        "copied": MessageLookupByLibrary.simpleMessage("تم النسخ الى الحافظة"),
         "createAccount": MessageLookupByLibrary.simpleMessage(" إصنع حساب"),
         "createDate": MessageLookupByLibrary.simpleMessage("تاريخ الإنشاء"),
         "creditCard": MessageLookupByLibrary.simpleMessage("بطاقة"),
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLoadingData":
             MessageLookupByLibrary.simpleMessage(" خطأ في تحميل البيانات"),
         "firstName": MessageLookupByLibrary.simpleMessage(" الاسم الاول"),
+        "hand": MessageLookupByLibrary.simpleMessage("يدوي"),
         "historyOrder": MessageLookupByLibrary.simpleMessage("الطلبات الحالية"),
         "iHaveAnAccount": MessageLookupByLibrary.simpleMessage(" لدي حساب"),
         "invalidCredentials": MessageLookupByLibrary.simpleMessage(
@@ -78,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" الرجاء ملء الحقل"),
         "pleaseEnterYourEmail": MessageLookupByLibrary.simpleMessage(
             " رجاءا أدخل بريدك الإلكتروني"),
+        "reject": MessageLookupByLibrary.simpleMessage("رفض"),
         "restName": MessageLookupByLibrary.simpleMessage(" اسم المطعم"),
         "searchForName": MessageLookupByLibrary.simpleMessage("أبحث عن اسم"),
         "setting": MessageLookupByLibrary.simpleMessage("الإعدادات"),
